@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,5 +44,23 @@ public class IcrecreamController {
 	{
 		return ice.getIcecream(id);
 	}
+	//sorting
+	@GetMapping("/sortCreams/{field}")
+	public List<Icecream> sortIcecreams(@PathVariable String field)
+	{
+		return ice.sortIcecreams(field);
+	}
+	//Pagination
+	@GetMapping("/PagingCreams/{offset}/{pageSize}")
+	public List<Icecream> pagingIcecreams(@PathVariable int offset,@PathVariable int pageSize)
+	{
+		return ice.pagingIcecreams(offset,pageSize);
+	}
+	//pagination and sorting
 
+	@GetMapping("/Paging/AndSortingIcecreams/{offset}/{pageSize}/{field}")
+	public List<Icecream> pagingAndSortingCreams(@PathVariable int offset,@PathVariable int pageSize,@PathVariable String field)
+	{
+		return ice.pagingAndSortingCreams(offset,pageSize,field);
+	}
 }
